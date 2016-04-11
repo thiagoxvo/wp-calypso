@@ -51,12 +51,11 @@ function renderEditor( context, postType ) {
 	ReactDom.unmountComponentAtNode( document.getElementById( 'secondary' ) );
 	ReactDom.render(
 		React.createElement( ReduxProvider, { store: context.store },
-			React.createElement( PreferencesData, null,
-				React.createElement( PostEditor, {
-					sites: sites,
-					type: postType
-				} )
-			)
+			React.createElement( PostEditor, {
+				user: user,
+				sites: sites,
+				type: postType
+			} )
 		),
 		document.getElementById( 'primary' )
 	);
