@@ -3,9 +3,7 @@
  */
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import classNames from 'classnames';
 import unescapeString from 'lodash/unescape';
-import isEqual from 'lodash/isEqual';
 import sortBy from 'lodash/sortBy';
 import includes from 'lodash/includes';
 
@@ -17,7 +15,8 @@ import QueryTerms from 'components/data/query-terms';
 import { getSelectedSiteId } from 'state/ui/selectors';
 import {
 	isRequestingTermsForQuery,
-	getTermsForQuery
+	getTermsLastPageForQuery,
+	getTermsHierarchyForQueryIgnoringPage
 } from 'state/terms/selectors';
 import localize from 'lib/mixins/i18n/localize';
 
@@ -72,7 +71,7 @@ class TermSelectorList extends Component {
 		);
 
 		return (
-			<li key={ 'category-' + itemId }>
+			<li key={ [ item.parent, itemId ].join( '-' ) }>
 				<label>{ input } { name }</label>
 				{ item.items ? this.renderHierarchy( item.items, true ) : null }
 			</li>
@@ -98,7 +97,7 @@ class TermSelectorList extends Component {
 		return (
 			<li>
 				<input className="placeholder-text" type={ inputType } name="terms" disabled={ true } />
-				<label><span className="placeholder-text">{ translate( 'Loading list of options...' ) }</span></label>
+				<label><span className="placeholder-text">{ translate( 'Loading list of options…' ) }</span></label>
 			</li>
 		);
 	}
@@ -109,7 +108,6 @@ class TermSelectorList extends Component {
 
 	render() {
 		const { terms, loading, siteId, query } = this.props;
-		console.log( 'rendering', this.props );
 
 		return (
 			<form>
@@ -141,16 +139,21 @@ TermSelectorList.defaultProps = {
 export default connect( ( state, ownProps ) => {
 	const siteId = getSelectedSiteId( state );
 	let query = {};
-	const { taxonomy, search } = ownProps;
+	const { taxonomy, search, page } = ownProps;
 
 	// Only set search if the string has a length
 	if ( search && search.length ) {
 		query.search = search;
 	}
 
+	if ( page ) {
+		query.page = page;
+	}
+
 	return {
 		loading: isRequestingTermsForQuery( state, siteId, taxonomy, query ),
-		terms: getTermsForQuery( state, siteId, taxonomy, query ),
+		terms: getTermsHierarchyForQueryIgnoringPage( state, siteId, taxonomy, query ),
+		lastPage: getTermsLastPageForQuery( state, siteId, taxonomy, query ),
 		siteId,
 		query
 	};
