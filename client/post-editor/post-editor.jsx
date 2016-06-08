@@ -52,6 +52,7 @@ import { receivePost, editPost, resetPostEdits } from 'state/posts/actions';
 import EditorSidebarHeader from 'post-editor/editor-sidebar/header';
 import EditorDocumentHead from 'post-editor/editor-document-head';
 import EditorPostTypeUnsupported from 'post-editor/editor-post-type-unsupported';
+import EditorForbidden from 'post-editor/editor-forbidden';
 
 const messages = {
 	post: {
@@ -292,6 +293,7 @@ const PostEditor = React.createClass( {
 			<div className="post-editor">
 				<EditorDocumentHead />
 				<EditorPostTypeUnsupported />
+				<EditorForbidden />
 				<div className="post-editor__inner">
 					<div className="post-editor__content">
 						<EditorMobileNavigation site={ site } onClose={ this.onClose } />
