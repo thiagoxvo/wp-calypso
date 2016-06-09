@@ -6,7 +6,6 @@ import React from 'react';
 /**
  * Internal dependencies
  */
-import config from 'config';
 import Button from 'components/button';
 import Gridicon from 'components/gridicon';
 import Main from 'components/main';
@@ -28,7 +27,7 @@ const Connect = React.createClass( {
 					<Gridicon icon="help" />
 				</a>
 				<div className="auth__links">
-					<a href={ config( 'signup_url' ) }>{ this.translate( 'Create account' ) }</a>
+					<a href="https://wordpress.com/start">{ this.translate( 'Create account' ) }</a>
 				</div>
 			</Main>
 		);
