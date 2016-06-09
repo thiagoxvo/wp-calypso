@@ -191,7 +191,7 @@
       "version": "6.0.4"
     },
     "babel-generator": {
-      "version": "6.9.0",
+      "version": "6.10.0",
       "dependencies": {
         "source-map": {
           "version": "0.5.6"
@@ -330,7 +330,7 @@
       "version": "6.8.0"
     },
     "babel-plugin-transform-es2015-block-scoping": {
-      "version": "6.9.0"
+      "version": "6.10.1"
     },
     "babel-plugin-transform-es2015-classes": {
       "version": "6.9.0"
@@ -449,7 +449,7 @@
       "version": "6.9.0"
     },
     "babel-types": {
-      "version": "6.9.1"
+      "version": "6.10.0"
     },
     "babylon": {
       "version": "6.8.1"
@@ -581,7 +581,7 @@
       }
     },
     "caniuse-db": {
-      "version": "1.0.30000477"
+      "version": "1.0.30000479"
     },
     "caseless": {
       "version": "0.11.0"
@@ -1696,7 +1696,7 @@
       "version": "0.0.0"
     },
     "i18n-calypso": {
-      "version": "1.0.4",
+      "version": "1.0.8",
       "dependencies": {
         "async": {
           "version": "1.5.2"
