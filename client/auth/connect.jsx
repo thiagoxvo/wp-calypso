@@ -20,7 +20,7 @@ const Connect = React.createClass( {
 				<WordPressLogo size={ 72 } />
 				<div className="auth__connect-intro">
 					<p className="auth__welcome">
-						Welcome to WP-Calypso. Authorize the application with your WordPress.com credentials to get started.
+						Welcome to Calypso. Authorize the application with your WordPress.com credentials to get started.
 					</p>
 					<Button href={ this.props.authUrl }>Authorize App</Button>
 				</div>
