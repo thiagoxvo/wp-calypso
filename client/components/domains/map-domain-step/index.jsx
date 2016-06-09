@@ -18,7 +18,6 @@ var cartItems = require( 'lib/cart-values' ).cartItems,
 	upgradesActions = require( 'lib/upgrades/actions' ),
 	{ getCurrentUser } = require( 'state/current-user/selectors' );
 
-
 var MapDomainStep = React.createClass( {
 	mixins: [ analyticsMixin( 'mapDomain' ) ],
 
@@ -205,7 +204,7 @@ var MapDomainStep = React.createClass( {
 								?email=${ this.props.currentUser && encodeURIComponent( this.props.currentUser.email ) || '' }
 								&domain=${ domain }` }/>
 						}
-				} );
+					} );
 				severity = 'info';
 				break;
 			case 'not_mappable':
@@ -230,7 +229,7 @@ var MapDomainStep = React.createClass( {
 				message = this.translate( 'Sorry but WordPress.com domains cannot be mapped to a WordPress.com blog.' );
 				break;
 
-			case 'blacklisted_domain':
+			case 'trademarked_domain':
 				message = this.translate( 'Sorry but %(domain)s cannot be mapped to a WordPress.com blog.', {
 					args: { domain: domain }
 				} );

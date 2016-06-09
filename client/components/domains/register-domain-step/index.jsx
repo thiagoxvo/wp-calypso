@@ -575,8 +575,20 @@ const RegisterDomainStep = React.createClass( {
 				message = null;
 				break;
 
-			case 'mappable_but_blacklisted_domain':
-				message = this.translate( 'Domain cannot be mapped to a WordPress.com blog because of blacklisted term.' );
+			case 'mappable_but_trademarked_domain':
+				if ( domain.toLowerCase().indexOf( 'wordpress' ) > -1 ) {
+					message = this.translate(
+						'Due to trademark policy, we are not able to allow domains containing {{a1}}WordPress{{/a1}} to be registered or mapped here. Please {{a2}}contact support{{/a2}} if you have any questions.',
+						{
+							components: {
+								a1: <a target="_blank" href="http://wordpressfoundation.org/trademark-policy/"/>,
+								a2: <a target="_blank" href="https://wordpress.com/help/contact"/>
+							}
+						}
+					);
+				} else {
+					message = this.translate( 'Domain cannot be mapped to a WordPress.com blog because of trademarked term.' );
+				}
 				break;
 
 			case 'mappable_but_forbidden_subdomain':
