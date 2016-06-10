@@ -9,6 +9,7 @@ import noop from 'lodash/noop';
  */
 import analytics from 'lib/analytics';
 import SignupActions from 'lib/signup/actions';
+import getThemes from 'lib/signup/themes';
 import ThemesList from 'components/themes-list';
 import StepWrapper from 'signup/step-wrapper';
 import Button from 'components/button';
@@ -59,7 +60,8 @@ module.exports = React.createClass( {
 	},
 
 	getThemes() {
-		return this.props.signupDependencies.themes || this.props.themes;
+		const dependencies = this.props.signupDependencies;
+		return dependencies.themes || getThemes( dependencies.surveyQuestion, dependencies.designType );
 	},
 
 	renderThemesList: function() {
