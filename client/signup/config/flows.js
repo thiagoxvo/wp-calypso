@@ -161,6 +161,13 @@ const flows = {
 	jetpack: {
 		steps: [ 'jetpack-user' ],
 		destination: '/'
+	},
+
+	'new-vertical-site': {
+		steps: [ 'survey', 'desing-type', 'themes', 'domains', 'plans', 'survey-user' ],
+		destination: getSiteDestination,
+		description: 'Test flow showing a tailored set of themes for each vertical.',
+		lastModified: '2016-06-10'
 	}
 };
 
