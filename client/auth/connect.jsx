@@ -6,12 +6,17 @@ import React from 'react';
 /**
  * Internal dependencies
  */
+import config from 'config';
 import Button from 'components/button';
 import Gridicon from 'components/gridicon';
 import Main from 'components/main';
 import WordPressLogo from 'components/wordpress-logo';
 
 const Connect = React.createClass( {
+
+	getCreateAccountUrl() {
+		return config.isEnabled( 'devdocs' ) ? 'https://wordpress.com/start/developer' : 'https://wordpress.com/start';
+	},
 
 	render() {
 		return (
@@ -27,7 +32,7 @@ const Connect = React.createClass( {
 					<Gridicon icon="help" />
 				</a>
 				<div className="auth__links">
-					<a href="https://wordpress.com/start">{ this.translate( 'Create account' ) }</a>
+					<a href={ this.getCreateAccountUrl() }>{ this.translate( 'Create account' ) }</a>
 				</div>
 			</Main>
 		);
