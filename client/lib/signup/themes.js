@@ -43,6 +43,20 @@ const map = {
 	]
 };
 
-export default function getThemes( key ) {
-	return shuffle( map[ key ] || [] );
+export function getDefaultThemes() {
+	return [
+		{ name: 'Dyad', slug: 'dyad' },
+		{ name: 'Independent Publisher', slug: 'independent-publisher' },
+		{ name: 'Sela', slug: 'sela' },
+		{ name: 'Hemingway Rewritten', slug: 'hemingway-rewritten' },
+		{ name: 'Twenty Sixteen', slug: 'twentysixteen' },
+		{ name: 'Penscratch', slug: 'penscratch' },
+		{ name: 'Edin', slug: 'edin' },
+		{ name: 'Publication', slug: 'publication' },
+		{ name: 'Harmonic', slug: 'harmonic' },
+	];
+}
+
+export default function getThemes( vertical, designType ) {
+	return shuffle( map[ designType ] || getDefaultThemes() );
 }
