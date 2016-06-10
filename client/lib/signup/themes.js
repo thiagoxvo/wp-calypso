@@ -1,4 +1,11 @@
+/**
+ * External dependencies
+ */
 import shuffle from 'lodash/shuffle';
+
+/**
+ * Internal dependencies
+ */
 
 const map = {
 	blog: [
