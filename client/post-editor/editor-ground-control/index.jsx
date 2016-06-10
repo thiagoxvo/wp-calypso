@@ -63,12 +63,19 @@ export default React.createClass( {
 	},
 
 	componentDidMount: function() {
-		if ( userUtils.needsVerificationForSite( this.props.site ) ) {
-			userUtils.pollVerificationForSite( this.props.site )
-			.then( () => {
-				this.forceUpdate();
-			} );
-		}
+		user.on( 'change', this.updateNeedsVerification );
+		user.on( 'verify', this.updateNeedsVerification );
+	},
+
+	componentWillUnmount: function() {
+		user.off( 'change', this.updateNeedsVerification );
+		user.off( 'verify', this.updateNeedsVerification );
+	},
+
+	updateNeedsVerification: function() {
+		this.setState( {
+			needsVerification: userUtils.needsVerificationForSite( this.props.site ),
+		} );
 	},
 
 	getInitialState: function() {
@@ -77,7 +84,8 @@ export default React.createClass( {
 			showAdvanceStatus: false,
 			showDateTooltip: false,
 			firstDayOfTheMonth: this.getFirstDayOfTheMonth(),
-			lastDayOfTheMonth: this.getLastDayOfTheMonth()
+			lastDayOfTheMonth: this.getLastDayOfTheMonth(),
+			needsVerification: userUtils.needsVerificationForSite( this.props.site ),
 		};
 	},
 
@@ -273,7 +281,7 @@ export default React.createClass( {
 		return ! this.props.isPublishing &&
 			! this.props.isSaveBlocked &&
 			this.props.hasContent &&
-			! userUtils.needsVerificationForSite( this.props.site );
+			! this.state.needsVerification;
 	},
 
 	toggleAdvancedStatus: function() {
@@ -424,7 +432,7 @@ export default React.createClass( {
 					}
 				</div>
 				{
-					userUtils.needsVerificationForSite( this.props.site ) &&
+					this.state.needsVerification &&
 					<div className="editor-ground-control__email-verification-notice" tabIndex={ 7 } onClick={ this.props.onMoreInfoAboutEmailVerify }>
 						<Gridicon
 							icon="info"
