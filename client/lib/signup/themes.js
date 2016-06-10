@@ -7,6 +7,30 @@ import shuffle from 'lodash/shuffle';
  * Internal dependencies
  */
 
+const themes = [
+	{
+		name: 'Button',
+		slug: 'button',
+		repo: 'pub',
+		design: 'blog',
+		verticals: [ 'a8c.1.1' ]
+	},
+	{
+		name: 'Franklin',
+		slug: 'franklin',
+		repo: 'pub',
+		design: 'blog',
+		verticals: [ 'a8c.1.2', 'a8c.5' ]
+	},
+	{
+		name: 'Sapor',
+		slug: 'sapor',
+		repo: 'pub',
+		design: 'blog',
+		verticals: [ 'a8c.1.3', 'a8c.5.3' ]
+	}
+];
+
 const map = {
 	blog: [
 		{ name: 'Button', slug: 'button' },
