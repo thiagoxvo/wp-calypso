@@ -313,7 +313,17 @@ export const SeoForm = React.createClass( {
 									url={ siteUrl }
 									type="website"
 									description={ seoMetaDescription }
-									image="blarg"
+									image="http://www.mcc.es/wp-content/uploads/2015/12/Lazer-Shark-Lasers-Gone-Wild.jpg"
+								/>
+
+								<div style={ { marginBottom: '2em' } }>&nbsp;</div>
+
+								<FacebookPreview
+									title={ seoTitle }
+									url={ siteUrl }
+									type="article"
+									description={ seoMetaDescription }
+									image="http://www.mcc.es/wp-content/uploads/2015/12/Lazer-Shark-Lasers-Gone-Wild.jpg"
 								/>
 							</FormFieldset>
 

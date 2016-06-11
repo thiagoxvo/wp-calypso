@@ -71,14 +71,10 @@
 
 }
 
-.facebook-opengraph-preview__article
 .facebook-opengraph-preview__body {
 	margin: 10px 12px;
-	height: auto;
-	max-height: 100px;
 }
 
-.facebook-opengraph-preview__article
 .facebook-opengraph-preview__title {
 	color: #1d2129;
 	font-family: Georgia, serif;
@@ -91,7 +87,6 @@
 	word-wrap: break-word;
 }
 
-.facebook-opengraph-preview__article
 .facebook-opengraph-preview__description {
 	color: #4b4f56;
 	font-family: helvetica, arial, sans-serif;
@@ -102,7 +97,6 @@
 	word-wrap: break-word;
 }
 
-.facebook-opengraph-preview__article
 .facebook-opengraph-preview__url {
 	color: #90949c;
 	font-family: helvetica, arial, sans-serif;
@@ -112,6 +106,27 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+
+.facebook-opengraph-preview__article
+.facebook-opengraph-preview__body {
+	height: auto;
+	max-height: 100px;
+}
+
+.facebook-opengraph-preview__article
+.facebook-opengraph-preview__title {
+	max-height: 100px;
+}
+
+.facebook-opengraph-preview__article
+.facebook-opengraph-preview__description {
+
+}
+
+.facebook-opengraph-preview__article
+.facebook-opengraph-preview__url {
+
 }
 
 .facebook-opengraph-preview__website
@@ -128,43 +143,24 @@
 
 .facebook-opengraph-preview__website
 .facebook-opengraph-preview__body {
-	margin: 10px 12px;
-	height: 132px;
+	height: 134px;
+	padding-left: 160px;
 	position: relative;
 }
 
 .facebook-opengraph-preview__website
 .facebook-opengraph-preview__title {
-	color: #1d2129;
-	font-family: Georgia, serif;
-	font-size: 18px;
-	font-weight: 500;
-	line-height: 22px;
 	margin-bottom: 5px;
 	max-height: 110px;
-	overflow: hidden;
-	word-wrap: break-word;
-	transition: color 0.1s ease-in-out;
 }
 
 .facebook-opengraph-preview__website
 .facebook-opengraph-preview__description {
-	font-size: 12px;
-	line-height: 16px;
-	font-family: helvetica, arial, sans-serif;
-	max-height: 80px;
-	overflow: hidden;
+
 }
 
 .facebook-opengraph-preview__website
 .facebook-opengraph-preview__url {
 	position: absolute;
 	bottom: 0;
-	font-size: 11px;
-	line-height: 11px;
-	text-transform: uppercase;
-	color: #90949c;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
 }
