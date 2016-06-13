@@ -25,5 +25,10 @@ export function getDefaultThemes() {
 }
 
 export default function getThemes( vertical, designType ) {
-	return themes.filter( filterDesignType, designType ).filter( filterVerticals, vertical );
+	let themeSet = themes.filter( filterDesignType, designType ).filter( filterVerticals, vertical );
+	if ( ! themeSet ) {
+		themeSet = getDefaultThemes();
+	}
+
+	return shuffle( themeSet );
 }
