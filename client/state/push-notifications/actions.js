@@ -36,6 +36,9 @@ import {
 	isServiceWorkerSupported,
 	registerServerWorker,
 } from 'lib/service-worker';
+import {
+	tracks
+} from 'lib/analytics';
 
 const debug = debugFactory( 'calypso:push-notifications' );
 const DAYS_BEFORE_FORCING_REGISTRATION_REFRESH = 15;
@@ -304,8 +307,10 @@ export function toggleEnabled() {
 		} );
 		if ( enabling ) {
 			dispatch( fetchAndLoadServiceWorker() );
+			tracks.recordEvent( 'calypso_web_push_notification_enabled' );
 		} else {
 			dispatch( deactivateSubscription() );
+			tracks.recordEvent( 'calypso_web_push_notification_disabled' );
 		}
 	};
 }
