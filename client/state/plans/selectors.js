@@ -51,7 +51,9 @@ export function getPlanPriceObject( state, productId, isMonthly = false ) {
 		return null;
 	}
 	const cost = plan.raw_price;
-	const currencySymbol = plan.formatted_price.slice( 0, 1 );
+	const dollarIndex = plan.formatted_price.indexOf( '$' );
+	const symbolIndex = dollarIndex > -1 ? dollarIndex + 1 : 1;
+	const currencySymbol = plan.formatted_price.slice( 0, symbolIndex ); // A$ or C$
 	const price = isMonthly ? +( cost / 12 ).toFixed( currencySymbol === '¥' ? 0 : 2 ) : cost;
 	const dollars = Math.floor( price );
 	const cents = ( price - dollars ) * 100;

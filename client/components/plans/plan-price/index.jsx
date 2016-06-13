@@ -23,8 +23,10 @@ const PlanPrice = React.createClass( {
 				return this.translate( 'Free', { context: 'Zero cost product price' } );
 			}
 
-			const currencySymbol = formattedPrice.slice( 0, 1 );
-			const monthlyPrice = +( rawPrice / 12 ).toFixed( currencySymbol === '¥' ? 0 : 2 );
+			const dollarIndex = formattedPrice.indexOf( '$' );
+			const symbolIndex = dollarIndex > -1 ? dollarIndex + 1 : 1;
+			const currencySymbol = formattedPrice.slice( 0, symbolIndex ); // A$ or C$
+			const monthlyPrice = ( rawPrice / 12 ).toFixed( currencySymbol === '¥' ? 0 : 2 );
 			formattedPrice = `${ currencySymbol }${ monthlyPrice }`;
 
 			return formattedPrice;
