@@ -82,7 +82,7 @@ module.exports = React.createClass( {
 		}
 
 		return paths.some( function( path ) {
-			return ( new RegExp( '^' + path + '(\\/|$)' ) ).test( this.props.path );
+			return path === this.props.path || 0 === this.props.path.indexOf( path + '/' );
 		}, this );
 	},
 
