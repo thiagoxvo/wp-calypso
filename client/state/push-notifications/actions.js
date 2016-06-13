@@ -294,6 +294,7 @@ export function block() {
 			type: PUSH_NOTIFICATIONS_BLOCK
 		} );
 		dispatch( deactivateSubscription() );
+		tracks.recordEvent( 'calypso_web_push_notifications_blocked' );
 	};
 }
 
