@@ -67,6 +67,14 @@ const map = {
 	]
 };
 
+function filterDesignType( theme ) {
+	return this === theme.design;
+}
+
+function filterVerticals( theme ) {
+	return ! ( -1 === theme.verticals.indexOf( this ) );
+}
+
 export function getDefaultThemes() {
 	return [
 		{ name: 'Dyad', slug: 'dyad' },
@@ -82,5 +90,5 @@ export function getDefaultThemes() {
 }
 
 export default function getThemes( vertical, designType ) {
-	return shuffle( map[ designType ] || getDefaultThemes() );
+	return themes.filter( filterDesignType, designType ).filter( filterVerticals, vertical );
 }
